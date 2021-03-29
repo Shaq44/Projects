@@ -91,18 +91,15 @@ this.mailboxcapacity = capacity;
 return this.mailboxcapacity;
 }
 private void changePassword(){
-String Y="Y";
-String y="y";
-String N="N";
-String n="n";
 System.out.print("Would you like to change your password(Y/N): ");
 Scanner input = new Scanner(System.in);
 String choice = input.nextLine();
-if(choice == N|| choice == n){
- System.out.println("Password not changed and will remain " + this.password);
-}else System.out.print("Enter new Password: " + choice);
-input.nextLine();
+if(choice.equals("N") || choice.equals("n")){
+ System.out.println("Password not changed and will remain: " + this.password);
+}else if(choice.equals("Y") || choice.equals("y")){ System.out.print("Enter new Password: ");
+this.password = input.nextLine();
 System.out.println("New Password: " + this.password);
+}
 
 }
 }
