@@ -100,7 +100,8 @@ if(choice.equals("N") || choice.equals("n")){
 this.password = input.nextLine();
 System.out.println("New Password: " + this.password);
 }
-
+}
+private void printInfo(){
 }
 }
 
