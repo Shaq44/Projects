@@ -28,9 +28,10 @@ System.out.print("Enter Alternate Email:");
 this.alternateemail = setAlternateEmail();
 this.mailboxcapacity = setmailCapacity();
 System.out.println("Mailbox Capacity: " + this.mailboxcapacity + "MB");
-changePassword();  
+changePassword();
+System.out.println("************************************");
+printInfo();
 }
-
 
 private  String  setDepartment(){
 int choice = 0;
@@ -102,6 +103,12 @@ System.out.println("New Password: " + this.password);
 }
 }
 private void printInfo(){
+System.out.print("is all the information correct(Y/N)? ");
+Scanner input = new Scanner(System.in);
+String choice = input.nextLine();
+if(choice.equals("Y") || choice.equals("y")){
+System.out.println("Name: " + this.firstname + " "  + this.lastname + "\nDepartment: " + this.department +  "\nEmail: " + this.emailaddress + "\nAlternate Email: " + this.alternateemail + "\nPassword: "
+ + this.password); 
 }
 }
-
+} 
