@@ -103,12 +103,45 @@ System.out.println("New Password: " + this.password);
 }
 }
 private void printInfo(){
+boolean print = false;
 System.out.print("is all the information correct(Y/N)? ");
 Scanner input = new Scanner(System.in);
 String choice = input.nextLine();
 if(choice.equals("Y") || choice.equals("y")){
 System.out.println("Name: " + this.firstname + " "  + this.lastname + "\nDepartment: " + this.department +  "\nEmail: " + this.emailaddress + "\nAlternate Email: " + this.alternateemail + "\nPassword: "
  + this.password); 
+}else if(choice.equals("N") || choice.equals("n")){
+System.out.print("What would you like to Edit? \n1:Password \n2:Name\n3:Department\n4:Alternate Email\n0:Print Information\nPick Option: ");
+int choose = input.nextInt();
+while(!print){
+switch(choose){
+case 1:
+System.out.print("Enter new password: ");
+this.password = input.nextLine();
+break;
+case 2:
+this.firstname = input.nextLine();
+System.out.print("Enter First Name: ");
+this.lastname = input.nextLine();
+System.out.print("Enter Last Name: ");
+break;
+case 3:
+this.department = input.nextLine();
+System.out.print("Enter new Department: ");
+break;
+case 4:
+System.out.print("Enter new Alternate Email: ");
+this.alternateemail = input.nextLine();
+break;
+case 0:
+print = true;
+break;
 }
+}
+if(choose == 0 || choose == 1|| choose == 2|| choose == 3 ||choose == 4 || choose ==5 ){
+System.out.println("Name: " + this.firstname + " "  + this.lastname + "\nDepartment: " + this.department +  "\nEmail: " + this.emailaddress + "\nAlternate Email: " + this.alternateemail + "\nPassword: "
+ + this.password); 
 }
 } 
+}
+}
