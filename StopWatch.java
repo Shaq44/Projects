@@ -36,16 +36,22 @@ time.setHorizontalAlignment(JTextField.CENTER);
 
 
 startButton.setBounds(100,200,75,50);
+startButton.setBackground(Color.green);
+startButton.setContentAreaFilled(false);
 startButton.setFont(new Font("FS_BOLD",Font.PLAIN,20));
 startButton.setFocusable(false);
 startButton.addActionListener(this);
 
 stopButton.setBounds(170,200,75,50);
+stopButton.setBackground(Color.red);
+stopButton.setContentAreaFilled(false);
 stopButton.setFont(new Font("FS_BOLD",Font.PLAIN,20));
 stopButton.setFocusable(false);
 stopButton.addActionListener(this);
 
 resetButton.setBounds(240,200,75,50);
+resetButton.setBackground(Color.yellow);
+resetButton.setContentAreaFilled(false);
 resetButton.setFont(new Font("FS_BOLD",Font.PLAIN,20));
 resetButton.setFocusable(false);
 resetButton.addActionListener(this);
@@ -92,6 +98,7 @@ sec_String = String.format("%02d",sec);
 min_String = String.format("%02d",min);
 hrs_String = String.format("%02d",hrs);
 
+time.setText(hrs_String + ":" + min_String + ":" + sec_String);
 }
 }
 
