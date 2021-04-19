@@ -47,6 +47,9 @@ repaint();
 }
 
 
+
+//this method allows the snake to travel passed the border and appear on the other side of the border
+
 public void checkCollision(){
 for(int i=body;i>0;i--){
 if((x[0] == x[i])&&(y[0]==y[i])){
@@ -70,6 +73,10 @@ time.stop();
 }
 }
 
+
+
+//this method initiates the game once the program is open
+
 public void startGame(){
 gameRunning = true;
 time = new Timer(Delay,this);
@@ -80,14 +87,24 @@ checkCollision();
 enemyEaten();
 }
 
+
+
+
+//this method creates new enemies randomly in the game. you have a x and y coordinate that
+//uses the Random class and takes the height and width and divides it by the unit size and multiply
+//the created are then put in the x and y arguments in fillOval to create new enemies
+
 public void newEnemy(){
 enemyX = random.nextInt((int)(screen_width/unit_size))*unit_size;
 enemyY = random.nextInt((int)(screen_height/unit_size))*unit_size;
 }
 
 
-public void enemyEaten(){
 
+//this enemyEaten method checks if an enemy has been eaten and keeps track of the score
+
+
+public void enemyEaten(){
 if((x[0] == enemyX)&&(y[0] == enemyY)){
 body++;
 score++;
@@ -111,6 +128,11 @@ g.fillOval(x[i],y[i],unit_size,unit_size);
 
 }
 }
+
+
+
+//This move method is connects to the Keys class and allows the the snake to move 
+
 
 
 public void move(){
@@ -140,6 +162,12 @@ y[0]+=unit_size;
 }
 
 
+
+
+
+//This class is used as an object in the parent class and extends the KeyAdapter
+//it extends the KeyAdapter cause it only uses the KeyPressed method and added to the outer class
+//you can only use the extends keyword once per class.
 
 
 public class Keys extends KeyAdapter{
