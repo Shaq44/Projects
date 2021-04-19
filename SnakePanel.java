@@ -46,7 +46,11 @@ checkCollision();
 repaint();
 }
 
+public void stop(){
 
+time.stop();
+
+}
 
 //this method allows the snake to travel passed the border and appear on the other side of the border
 
@@ -197,6 +201,11 @@ left = true;
 up = false;
 down = false;
 }
+
+if(key == e.VK_SPACE){
+time.stop();
+}
+
 }
 
 }
