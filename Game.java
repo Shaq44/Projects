@@ -5,6 +5,18 @@ import java.awt.event.*;
 
 public class Game implements ActionListener{
 
+boolean Started = false;
+final int screen_width = 800;
+final int screen_height = 800;
+final int unit_size = 50;
+final int game_units = (screen_width*screen_height)/unit_size;
+final int x[] = new int [game_units];
+final int y[] = new int [game_units];
+int bodyparts = 4;
+int enemyX;
+int enemyY;
+boolean running = false;
+//Random random;
 private boolean started = false;
 private int elapsedTime = 0;
 private int min = 0;
@@ -23,7 +35,6 @@ JPanel header = new JPanel();
 
 public Game(){
 Title.setBounds(200,100,400,250);
-//Title.setPreferredSize(new Dimension (500,500));
 Title.setFont(new Font("FS_BOLD",Font.PLAIN,90));
 //Title.setBorder(BorderFactory.createBevelBorder(1));
 Title.setForeground(Color.GREEN);
@@ -66,10 +77,12 @@ public void actionPerformed(ActionEvent e){
 if(e.getSource() == Play){
 gameScreen();
 start();
-}else if(e.getSource() == Pause){
-started = false;
+}
+if(e.getSource() == Pause){
 pause();
-Pause.setText("Start");
+}
+if(e.getSource() == Start){
+start();
 }
 }
 
@@ -85,31 +98,50 @@ clock.stop();
 
 
 
-public void gameScreen(){
+public void  gameScreen(){
+
+GamePlay gameplay = new GamePlay();
 Title.setVisible(false);
 Play.setVisible(false);
-header.setBounds(100,100,1000,50);
-header.setBackground(Color.WHITE);
+FlowLayout FLayOut = new FlowLayout();
+header.setBounds(100,100,750,100);
+header.setBackground(Color.black);
 
 
-Start.setBounds(300,100,100,50);
+Start.setBounds(160,100,100,50);
 Start.setFont(new Font("FS_BOLd",Font.PLAIN,20));
 Start.setHorizontalAlignment(SwingConstants.LEFT);
 Start.addActionListener(this);
 
+time.setForeground(Color.green);
+time.setBackground(Color.black);
 
-Pause.setBounds(300,100,100,50);
+
+Pause.setBounds(150,100,100,50);
 Pause.setFont(new Font("FS_BOLd",Font.PLAIN,20));
 Pause.setHorizontalAlignment(SwingConstants.LEFT);
 Pause.addActionListener(this);
 header.add(Pause);
+header.add(Start);
 header.add(time);
+header.setLayout(FLayOut);
 frame.add(header);
-
+frame.add(gameplay);
 
 }
+public class GamePlay extends JPanel{
 
+public  void draw(Graphics g){
+for(int i=0;i<screen_height/unit_size;i++){
+g.drawLine(i*unit_size,0,i*unit_size,screen_height);
+g.drawLine(i*unit_size,screen_width,i*unit_size,0);
+}
+}
 
-
+public void paintComponent(Graphics g){
+super.paintComponent(g);
+draw(g);
+}
+}
 
 }
