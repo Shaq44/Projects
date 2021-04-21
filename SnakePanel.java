@@ -5,16 +5,26 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class SnakePanel extends JPanel implements ActionListener{
+
+// these two feild instances define the size of the panel
 final int screen_width = 800;
 final int screen_height = 800;
+//this feild instance shows the unit size of the snake and enemies
 private int unit_size = 25;
 private int game_units = (screen_width*screen_height)/unit_size;
+//these two feild instances are the coordinates of the snakes body 
 int x[]  = new int[game_units];
 int y[]  = new int [game_units];
 private int body = 3;
 int enemyX;
 int enemyY;
 int score;
+int elapsedtime = 0;
+int sec = 0;
+int min = 0 ;
+private String sec_String = String.format("%02d",sec);
+private String min_String = String.format("%02d",min);
+private String score_String = String.format("%02d",score);
 boolean left = false;
 boolean right = true;
 boolean up = false;
@@ -23,6 +33,10 @@ int Delay = 75;
 boolean gameRunning = true;
 Random random;
 Timer time;
+JLabel Score = new JLabel();
+JLabel Timer = new JLabel();
+
+
 
 
 public SnakePanel(){
@@ -30,9 +44,27 @@ public SnakePanel(){
 random = new Random();
 
 this.setPreferredSize(new Dimension(screen_width,screen_height));
+this.add(Score);
 this.setBackground(Color.BLACK);
 this.setFocusable(true);
 this.addKeyListener(new Keys());
+
+Score.setText(score_String);
+Score.setBounds(50,25,70,70);
+Score.setFont(new Font ("FS_BOLD",Font.PLAIN,35));
+Score.setBorder(BorderFactory.createBevelBorder(1));
+Score.setForeground(Color.green);
+Score.setBackground(Color.black);
+Score.setOpaque(true);
+
+Timer.setText(min_String + ":" + sec_String);
+Timer.setBounds(0,0,70,70);
+Timer.setFont(new Font("FS_BOLd",Font.PLAIN,35));
+Timer.setBorder(BorderFactory.createBevelBorder(1));
+Timer.setForeground(Color.green);
+Timer.setBackground(Color.white);
+Timer.setOpaque(true);  
+
 startGame();
 }
 
@@ -42,8 +74,16 @@ if(gameRunning){
 move();
 enemyEaten();
 checkCollision();
+String score_String = String.format("%02d",score);
+Score.setText(score_String);
+elapsedtime = elapsedtime + 1000;
+min = (elapsedtime/60000)%60;
+sec = (elapsedtime/1000)%60;
+Timer.setText(min_String + ":" + sec_String);
+
 }
 repaint();
+
 }
 
 public void stop(){
@@ -206,6 +246,8 @@ if(key == e.VK_SPACE){
 time.stop();
 }
 
+if(key == e.VK_J){
+time.start();
 }
 
 }
@@ -214,7 +256,7 @@ time.stop();
 }
 
 
-
+}
 
 
 
