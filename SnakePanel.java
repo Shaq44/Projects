@@ -19,11 +19,6 @@ private int body = 3;
 int enemyX;
 int enemyY;
 int score;
-int elapsedtime = 0;
-int sec = 0;
-int min = 0 ;
-private String sec_String = String.format("%02d",sec);
-private String min_String = String.format("%02d",min);
 private String score_String = String.format("%02d",score);
 boolean left = false;
 boolean right = true;
@@ -34,7 +29,7 @@ boolean gameRunning = true;
 Random random;
 Timer time;
 JLabel Score = new JLabel();
-JLabel Timer = new JLabel();
+
 
 
 
@@ -44,27 +39,18 @@ public SnakePanel(){
 random = new Random();
 
 this.setPreferredSize(new Dimension(screen_width,screen_height));
-this.add(Timer);
 this.add(Score);
 this.setBackground(Color.BLACK);
 this.setFocusable(true);
 this.addKeyListener(new Keys());
 
-Score.setText(score_String);
+Score.setText("SCORE: " + score_String);
 Score.setBounds(50,25,70,70);
 Score.setFont(new Font ("FS_BOLD",Font.PLAIN,35));
-Score.setBorder(BorderFactory.createBevelBorder(1));
+//Score.setBorder(BorderFactory.createBevelBorder(1));
 Score.setForeground(Color.green);
 Score.setBackground(Color.black);
-Score.setOpaque(true);
-
-Timer.setText(min_String + ":" + sec_String);
-Timer.setBounds(0,0,70,70);
-Timer.setFont(new Font("FS_BOLd",Font.PLAIN,35));
-Timer.setBorder(BorderFactory.createBevelBorder(1));
-Timer.setForeground(Color.green);
-Timer.setBackground(Color.black);
-Timer.setOpaque(true);  
+Score.setOpaque(true); 
 
 startGame();
 }
@@ -77,15 +63,22 @@ enemyEaten();
 checkCollision();
 String score_String = String.format("%02d",score);
 Score.setText(score_String);
-elapsedtime = elapsedtime + 1000;
-min = (elapsedtime/60000)%60;
-sec = (elapsedtime/1000)%60;
-Timer.setText(min_String + ":" + sec_String);
-
 }
 repaint();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 public void stop(){
 
