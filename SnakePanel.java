@@ -206,6 +206,7 @@ y[0]+=unit_size;
 //This class is used as an object in the parent class and extends the KeyAdapter
 //it extends the KeyAdapter cause it only uses the KeyPressed method and added to the outer class
 //you can only use the extends keyword once per class.
+//this class allows you to move the snake and stop and start the game 
 
 
 public class Keys extends KeyAdapter{
