@@ -44,6 +44,7 @@ public SnakePanel(){
 random = new Random();
 
 this.setPreferredSize(new Dimension(screen_width,screen_height));
+this.add(Timer);
 this.add(Score);
 this.setBackground(Color.BLACK);
 this.setFocusable(true);
@@ -62,7 +63,7 @@ Timer.setBounds(0,0,70,70);
 Timer.setFont(new Font("FS_BOLd",Font.PLAIN,35));
 Timer.setBorder(BorderFactory.createBevelBorder(1));
 Timer.setForeground(Color.green);
-Timer.setBackground(Color.white);
+Timer.setBackground(Color.black);
 Timer.setOpaque(true);  
 
 startGame();
