@@ -1,23 +1,8 @@
-## My Coding Gung Fu 
-> _Gung Fu: discipline and training toward the mastery of some skill; in my case, coding._
-______________
-
-
-This repo is my dojo for code. It contains a record of my ~trials~ progress and examples of my work. 
-
-Feedback encouraged.
-
-<br>
-<br>
-
-
-`shaq`
-
-
-<br>
-<br>
+//Hello My name is Shaq 
 
 
 
 
-[insert training montage from 80s movie here]
+//This repo is a portfolio to showcase my work and to better my skills as a programmer
+//I will push multiple projects that introduce different skills and concepts
+//Any comments,ideas or suggestions are greatly appreciated 
