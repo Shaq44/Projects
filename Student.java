@@ -1,5 +1,13 @@
+/**
+*Shaquan Robinson 
+*Example of Schoool Management System
+*
+*/
 import java.lang.Math;
 import java.util.Random;
+
+
+
 
 public class Student{
 
@@ -8,7 +16,7 @@ private final String ID;
 private int grade;
 private final String name;
 private int fees_paid = 0;
-private int fees_total = 30000;
+private int Tuition;
 Random Rand;
 
 
@@ -19,6 +27,7 @@ this.name = name;
 this.ID = generateID(idlength); 
 //System.out.println("ID#: " + this.ID);
 this.grade = grade;
+Tuition = 30000;
 }
 
 public int getGrade(int grade){
@@ -71,11 +80,13 @@ return this.name;
 }
 
 public String getID(){
+//This method retrieves the students ID  
 return this.ID;
 }
 
 public int getFees(){
-return this.fees_total;
+//This method retrieves the current fees after bieng updated
+return Tuition-this.fees_paid;
 }
 
 public int getGrade(){
@@ -83,6 +94,9 @@ return this.grade;
 }
 
 private String generateID(int length){
+//This method generates a random password
+//for the students
+
 String id = "0123456789";
 char[]ID = new char[length];
 for(int i=0;i<length;i++){
@@ -92,14 +106,14 @@ ID[i] = id.charAt(rand);
 return new String(ID);
 }
 
-public int  payFees(int payment){
-int pay = payment+=fees_paid;
-int fees = fees_total-=pay;
-return fees;
+public void  setFees(int payment){
+this.fees_paid = payment;
 }
 
 
+
 public static Student newStudent(String name,int grade){
+//This method allows you to create a new student 
 return new Student(name,grade);
 } 
 

@@ -1,3 +1,10 @@
+/**
+*Shaquan Robinson
+*Example of Schoool Management System
+*
+*/
+
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class SchoolMain{
@@ -7,18 +14,6 @@ public static Scanner AdminInput = new Scanner(System.in);
 
 
 public static void main(String[] args){
-//Teacher teacher = new Teacher("Matt Reeves",38000);
-//System.out.println("NAME: " + teacher.getName());
-//System.out.println("ID#: " + teacher.getID());
-//System.out.println("Salary: " + teacher.getSalary());
-//System.out.println("******************************");
-//Student student = new Student("Tim Riddle",5);
-//System.out.println(student.generateID(4));
-//System.out.println("Total Fees: " + student.payFees(5000));
-//student.setGrade(6);
-//System.out.println("ID#: " + student.getID());
-//System.out.println("FEES: " + student.getFees());
-//System.out.println("***************************************");
 boolean exit = false;
 int choice = 0;
 printMenu();
@@ -57,6 +52,10 @@ System.out.println("1:Print Menu\n2:Add Student\n3:Print Student Info\n4:Find St
 
 
 public static void addStudent(){
+//This method adds a new student that isn't on file
+
+
+
 System.out.print("Enter new student first and last name: ");
 String name = AdminInput.nextLine();
 System.out.print("Enter student grade: ");
@@ -69,6 +68,8 @@ newStudent.getID());
 }
 
 public static void findStudent(){
+//This method finds the student you're looking for that is on file
+
 System.out.print("Enter student first and last name: ");
 String name = AdminInput.nextLine();
 int studentInfo = school.findStudent(name);
@@ -78,15 +79,21 @@ school.printStudentInfo();
 
 }
 public static void pay_Fees(){
+//This is a update fees method, The Method does update the fees but only on the first element in the array 
+//The method checks for the student name and if they're on file then the fees are updated but for some reason 
+//the method only affects the first element 
+
+
+
+
 System.out.print("Enter first and last name: ");
 String name = AdminInput.nextLine();
-int studentPayment = school.findStudent(name);
-if(name != null){
-System.out.print("Enter Amount: ");
-int pay = AdminInput.nextInt();
-school.payFees(pay);
+if(school.findStudent(name)>=0){
+System.out.print("Enter Amount: $");
+int payment = AdminInput.nextInt();
+school.payFees(payment);
 System.out.println("Student Account updated, print list again to see students updated information");
-}else System.out.println("Student not on file");
+} else System.out.println("Student not in the system.");
 }
 
 }
