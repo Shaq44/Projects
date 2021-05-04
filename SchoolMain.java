@@ -29,13 +29,13 @@ case 2:
 addStudent();
 break;
 case 3:
-school.printStudentInfo();
+findInfo();
 break;
 case 4:
-findStudent();
+pay_Fees();
 break;
 case 5:
-pay_Fees();
+printList();
 break;
 case 6:
 exit = true;
@@ -47,37 +47,80 @@ break;
 }
 
 public static void printMenu(){
-System.out.println("1:Print Menu\n2:Add Student\n3:Print Student Info\n4:Find Student \n5:Pay Fees\n6:Exit System");
+System.out.println("1:Print Menu\n2:Add Student or Faculty Info\n3:Find Student \n4:Pay Fees\n5:Print Personnel Info \n6:Exit System");
 }
 
 
+
+
+public static void printList(){
+System.out.print("Press(T/t) to print teacher list or press(S/s) to print student list: ");
+String choice = AdminInput.nextLine();
+if(choice.equals("T") || choice.equals("t")){
+school.printFaculty();
+} else if(choice.equals("S")||choice.equals("s")){
+school.printStudentInfo();
+}
+}
+
+
+
+
+
+
+
 public static void addStudent(){
-//This method adds a new student that isn't on file
+//This method adds  new students or teachers that isn't on file
 
 
-
+System.out.print("Would you like to add a new Student or Teacher to the system, Press(T/t) or (S/s) to add either teacher or student: ");
+String choice = AdminInput.nextLine();
+if(choice.equals("T")||choice.equals("t")){
+System.out.print("Enter faculty first and last name: ");
+String Name = AdminInput.nextLine();
+System.out.print("Enter faculty members salary: ");
+int salary = AdminInput.nextInt();
+Teacher teacher = Teacher.addTeacher(Name,salary);
+if(school.newFaculty(teacher)){
+System.out.println("Name: " + Name + "\nSalary: " + salary + "\nID#: " + teacher.getID());
+}
+}else if(choice.equals("S")||choice.equals("s")){
 System.out.print("Enter new student first and last name: ");
 String name = AdminInput.nextLine();
 System.out.print("Enter student grade: ");
 int grade = AdminInput.nextInt();
 Student newStudent = Student.newStudent(name,grade);
 if(school.newStudent(newStudent)){
-System.out.println("Student Name: " + name + "\nGrade: " + newStudent.getGrade() + "\nID#: " + 
+System.out.println("Student Name: " + name + "\nGrade: " + newStudent.getGrade() + "\nID#: " +
 newStudent.getID());
+}  
+
 }
+//}
 }
 
-public static void findStudent(){
+public static void findInfo(){
 //This method finds the student you're looking for that is on file
-
+System.out.print("Press(T/t) to look for teachers or press(S/s) to look for student: ");
+String choice = AdminInput.nextLine();
+if(choice.equals("T")||choice.equals("t")){
+System.out.print("Enter teacher first and last name: ");
+String name = AdminInput.nextLine();
+Teacher teacherInfo = school.searchTeacher(name);
+if(name != null){
+school.showTeacherInfo(teacherInfo);
+}
+} else if(choice.equals("S")||choice.equals("s")){
 System.out.print("Enter student first and last name: ");
 String name = AdminInput.nextLine();
-int studentInfo = school.findStudent(name);
+Student studentInfo = school.searchStudent(name);
 if(name!=null){
-school.printStudentInfo();
-}else System.out.println("Student not on file");
-
+school.showStudentInfo(studentInfo);
+}else System.out.println("Person not on file");
 }
+}
+
+
 public static void pay_Fees(){
 //This is a update fees method, The Method does update the fees but only on the first element in the array 
 //The method checks for the student name and if they're on file then the fees are updated but for some reason 
@@ -88,7 +131,7 @@ public static void pay_Fees(){
 
 System.out.print("Enter first and last name: ");
 String name = AdminInput.nextLine();
-if(school.findStudent(name)>=0){
+if(school.searchStudent(name)!=null){
 System.out.print("Enter Amount: $");
 int payment = AdminInput.nextInt();
 school.payFees(payment);
