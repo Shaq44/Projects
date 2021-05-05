@@ -111,17 +111,12 @@ return null;
 }
 
 
-public int payFees(int payment){
+public Student payFees(Student student,int payment){
 //This method finds the student and updates the fees that they pay
 
-for(int i=0;i<this.students.size();i++){
-Student name = this.students.get(i);
-if(search_Students(name) >= 0){
-name.setFees(payment);
-System.out.println("Tuition: $" + name.getFees());
-}
-}
-return -1;
+if(student != null){
+student.setFees(payment);
+}return null;
 }
 
 

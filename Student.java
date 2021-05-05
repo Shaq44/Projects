@@ -86,7 +86,7 @@ return this.ID;
 
 public int getFees(){
 //This method retrieves the current fees after bieng updated
-return Tuition-this.fees_paid;
+return Tuition;
 }
 
 public int getGrade(){
@@ -107,7 +107,9 @@ return new String(ID);
 }
 
 public void  setFees(int payment){
-this.fees_paid = payment;
+this.fees_paid = payment; 
+int updated_fees = Tuition - this.fees_paid;
+Tuition = updated_fees;
 }
 
 

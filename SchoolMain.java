@@ -131,10 +131,11 @@ public static void pay_Fees(){
 
 System.out.print("Enter first and last name: ");
 String name = AdminInput.nextLine();
-if(school.searchStudent(name)!=null){
-System.out.print("Enter Amount: $");
-int payment = AdminInput.nextInt();
-school.payFees(payment);
+Student studentInfo = school.searchStudent(name);
+if(studentInfo!=null){
+System.out.print("Enter Amount: ");
+int pay = AdminInput.nextInt();
+school.payFees(studentInfo,pay);
 System.out.println("Student Account updated, print list again to see students updated information");
 } else System.out.println("Student not in the system.");
 }
