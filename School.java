@@ -14,16 +14,16 @@ public class School{
 private ArrayList <Teacher> teachers;
 private ArrayList <Student> students;
 private int SchoolFunds;
-private int StudentTuition;
-private int StudentPayment;
+private int StudentPayments;
 private int SchoolPaySalaries;
 private String SchoolName;
+
 
 public School(String name){
 this.SchoolName = name;
 this.teachers = new ArrayList<Teacher>();
 this.students = new ArrayList<Student>();
-this.StudentTuition = 30000;
+this.SchoolFunds = 500000;
 }
 
 public boolean newStudent(Student students){
@@ -103,6 +103,16 @@ return this.teachers.get(index);
 return null;
 }
 
+public void setSchoolFunds(int payment){
+this.StudentPayments = payment;
+int updated_fees = SchoolFunds + this.StudentPayments;
+SchoolFunds = updated_fees;
+}
+
+public int getSchoolFunds(){
+return SchoolFunds;
+}
+
 public Teacher showTeacherInfo(Teacher teacher){
 if(teacher != null){
 System.out.println("Name: " + teacher.getName() + "\nSalary: "  + teacher.getSalary() + "\nID#: " + teacher.getID());
@@ -135,6 +145,14 @@ public void printFaculty(){
 for(int i=0;i<this.teachers.size();i++){
 System.out.println((i+1) +   ".)" + this.teachers.get(i).getName() + "\nSalary: $" + this.teachers.get(i).getSalary() + "\nID#: " + this.teachers.get(i).getID());
 }
+}
+
+public void showFunds(){
+int total = 0;
+for(int i=0;i<this.students.size();i++){
+SchoolFunds = total += this.students.get(i).getFees();
+}
+System.out.println("SchoolFunds: " + SchoolFunds);
 }
 
 

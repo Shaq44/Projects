@@ -113,7 +113,6 @@ Tuition = updated_fees;
 }
 
 
-
 public static Student newStudent(String name,int grade){
 //This method allows you to create a new student 
 return new Student(name,grade);

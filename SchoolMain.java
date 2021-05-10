@@ -38,6 +38,9 @@ case 5:
 printList();
 break;
 case 6:
+System.out.println("Total School Funding: $" + school.getSchoolFunds());
+break;
+case 7:
 exit = true;
 System.out.println("You have succesfully closed the system");
 break;
@@ -47,7 +50,7 @@ break;
 }
 
 public static void printMenu(){
-System.out.println("1:Print Menu\n2:Add Student or Faculty Info\n3:Find Student \n4:Pay Fees\n5:Print Personnel Info \n6:Exit System");
+System.out.println("1:Print Menu\n2:Add Student or Faculty Info\n3:Find Student \n4:Pay Fees\n5:Print Personnel Info \n6:Show Funds\n7:Exit System");
 }
 
 
@@ -133,9 +136,12 @@ System.out.print("Enter first and last name: ");
 String name = AdminInput.nextLine();
 Student studentInfo = school.searchStudent(name);
 if(studentInfo!=null){
-System.out.print("Enter Amount: ");
+System.out.print("Enter Amount: $");
 int pay = AdminInput.nextInt();
 school.payFees(studentInfo,pay);
+System.out.print("Enter amount student paid for school records: $");
+int payment = AdminInput.nextInt();
+school.setSchoolFunds(payment);
 System.out.println("Student Account updated, print list again to see students updated information");
 } else System.out.println("Student not in the system.");
 }
